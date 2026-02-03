@@ -1,0 +1,133 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: #f6f7fb;
+  color: #111827;
+}
+
+.app {
+  max-width: 980px;
+  margin: 48px auto;
+  padding: 0 18px 60px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+h1 { margin: 0; font-size: 30px; }
+h2 { margin: 0 0 12px; font-size: 16px; color: #374151; }
+
+.twoCol {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #e6e7f2;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.04);
+}
+
+.inline { display: inline; }
+
+.btn {
+  border: 0;
+  border-radius: 12px;
+  padding: 10px 14px;
+  background: #111827;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn.small { padding: 8px 10px; border-radius: 10px; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.table th,
+.table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #eef0f4;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.table thead th {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6b7280;
+}
+
+.personCell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+}
+
+.link {
+  color: #111827;
+  text-decoration: none;
+  font-weight: 600;
+}
+.link:hover { text-decoration: underline; }
+
+.pager {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  gap: 10px;
+}
+.pagerBtns { display: flex; gap: 8px; }
+
+.detail { display: grid; gap: 10px; }
+.detailHeader { display: flex; align-items: center; gap: 12px; }
+.detailName { margin: 0; font-size: 18px; }
+
+.avatarLarge {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 2px solid #e5e7eb;
+}
+
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border: 1px solid #eef0f4;
+  border-radius: 12px;
+  background: #f9fafb;
+}
+
+.label { color: #6b7280; }
+
+.muted { color: #6b7280; }
+
+@media (max-width: 900px) {
+  .header { flex-direction: column; align-items: stretch; }
+  .twoCol { grid-template-columns: 1fr; }
+}

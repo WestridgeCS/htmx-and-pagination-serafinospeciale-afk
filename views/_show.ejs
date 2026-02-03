@@ -1,0 +1,26 @@
+<% if (!person) { %>
+  <div class="muted">Click a person’s name to view details.</div>
+<% } else { %>
+  <div class="detail">
+    <div class="detailHeader">
+      <% if (person.avatar) { %>
+        <img class="avatarLarge" src="<%= person.avatar %>" alt="avatar" />
+      <% } %>
+
+      <div>
+        <h3 class="detailName"><%= person.first %> <%= person.last %></h3>
+        <div class="muted"><%= person.email || '' %></div>
+      </div>
+    </div>
+
+    <div class="detailRow">
+      <span class="label">Phone</span>
+      <span><%= person.phone || '' %></span>
+    </div>
+
+    <div class="detailRow">
+      <span class="label">Location</span>
+      <span><%= [person.city, person.state].filter(Boolean).join(', ') %></span>
+    </div>
+  </div>
+<% } %>

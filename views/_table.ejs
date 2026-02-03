@@ -1,0 +1,71 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Person</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if (people.length === 0) { %>
+      <tr>
+        <td colspan="4" class="muted">No people yet. Click “Seed 20”.</td>
+      </tr>
+    <% } %>
+
+    <% people.forEach(p => { %>
+      <tr>
+        <td>
+          <div class="personCell">
+            <% if (p.avatar) { %>
+              <img class="avatar" src="<%= p.avatar %>" alt="avatar" />
+            <% } %>
+
+            <a
+              class="link"
+              href="#"
+              hx-get="/people/<%= p._id %>"
+              hx-target="#detailPane"
+              hx-swap="innerHTML"
+            >
+              <%= p.last %>, <%= p.first %>
+            </a>
+          </div>
+        </td>
+        <td><%= p.email || '' %></td>
+        <td><%= p.phone || '' %></td>
+        <td><%= [p.city, p.state].filter(Boolean).join(', ') %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<div class="pager">
+  <div class="muted">
+    Page <strong><%= page %></strong> of <strong><%= totalPages %></strong>
+  </div>
+
+  <div class="pagerBtns">
+    <button
+      class="btn small"
+      <%= page <= 1 ? 'disabled' : '' %>
+      hx-get="/people?page=<%= page - 1 %>"
+      hx-target="#tableWrap"
+      hx-swap="innerHTML"
+    >
+      Prev
+    </button>
+
+    <button
+      class="btn small"
+      <%= page >= totalPages ? 'disabled' : '' %>
+      hx-get="/people?page=<%= page + 1 %>"
+      hx-target="#tableWrap"
+      hx-swap="innerHTML"
+    >
+      Next
+    </button>
+  </div>
+</div>

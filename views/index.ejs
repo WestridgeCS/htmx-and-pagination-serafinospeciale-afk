@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>People (HTMX)</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>People Directory</h1>
+
+      <form
+        class="inline"
+        action="/people/seed"
+        method="POST"
+        hx-post="/people/seed"
+        hx-target="#tableWrap"
+        hx-swap="innerHTML"
+      >
+        <button class="btn" type="submit">Seed 20</button>
+      </form>
+    </header>
+
+    <div class="twoCol">
+      <section class="card">
+        <h2>People</h2>
+        <div id="tableWrap">
+          <%- include('./_table', { people, total, page, limit, totalPages }) %>
+        </div>
+      </section>
+
+      <aside class="card" id="detailPane">
+        <%- include('./_show', { person: null }) %>
+      </aside>
+    </div>
+  </div>
+</body>
+</html>
